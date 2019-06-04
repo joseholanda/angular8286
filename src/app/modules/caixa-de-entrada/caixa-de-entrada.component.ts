@@ -1,0 +1,57 @@
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'cmail-caixa-de-entrada',
+  templateUrl: './caixa-de-entrada.component.html',
+  styles: []
+})
+export class CaixaDeEntradaComponent {
+
+  private _isNewEmailFormOpen = false;
+
+  emailList = [];
+  email = {
+    destinatario: '',
+    assunto: '',
+    conteudo: ''
+  }
+
+  get isNewEmailFormOpen() {
+    return this._isNewEmailFormOpen;
+  }
+
+  toggleNewEmailForm() {
+    this._isNewEmailFormOpen = !this.isNewEmailFormOpen
+  }
+
+  handleNewEmail(formEmail: NgForm) {
+
+    if (formEmail.invalid) {
+      alert('E os campos obrigatorios??');
+      return;
+    }
+
+    this.emailList.push(this.email)
+
+    this.email = {
+      destinatario: '',
+      assunto: '',
+      conteudo: ''
+    }
+
+    this.limparFormulario();
+    formEmail.reset();
+    this.toggleNewEmailForm();
+
+  }
+
+  limparFormulario() {
+    this.email = { 
+      destinatario: "jose.holanda@holanda.com.br",
+      assunto: "assunto",
+      conteudo: "conteudo"
+    };
+  }
+
+}
