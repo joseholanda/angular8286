@@ -13,22 +13,30 @@ import { CmailFormGroupComponent } from './components/cmail-form-group/cmail-for
 import { CmailFormFieldDirective } from './components/cmail-form-group/cmail-form-field.directive';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CadastroModule } from './modules/cadastro/cadastro.module';
+
+import { SharedComponentsModule } from './components/shared-components.module';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    // HeaderComponent,
     CaixaDeEntradaComponent,
     LoginComponent,
-    CadastroComponent,
-    CmailFormGroupComponent,
-    CmailFormFieldDirective,
+    // CadastroComponent,
+    // CmailFormGroupComponent,
+    // CmailFormFieldDirective,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ModuloRoteamento,
-    ReactiveFormsModule,
     HttpClientModule,
+    CadastroModule,
+    SharedComponentsModule,
+    // ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
