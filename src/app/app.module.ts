@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CaixaDeEntradaComponent } from './modules/caixa-de-entrada/caixa-de-entrada.component';
 import { LoginComponent } from './modules/login/login.component';
 import { CadastroComponent } from './modules/cadastro/cadastro.component';
-import { ModuloRoteamento } from './app.routes';
+import { ModuloRoteamento } from './app-routing.module';
 import { CmailFormGroupComponent } from './components/cmail-form-group/cmail-form-group.component';
 import { CmailFormFieldDirective } from './components/cmail-form-group/cmail-form-field.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,7 +33,7 @@ import { SharedComponentsModule } from './components/shared-components.module';
     FormsModule,
     ModuloRoteamento,
     HttpClientModule,
-    CadastroModule,
+    // CadastroModule,
     SharedComponentsModule,
     // ReactiveFormsModule,
     

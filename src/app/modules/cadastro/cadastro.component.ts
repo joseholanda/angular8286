@@ -35,8 +35,8 @@ export class CadastroComponent implements OnInit {
   }
 
   validatTodosOsCamposDoFormulario(form:FormGroup) {
-    Object.keys(form.controls).forEach(field => {
-      const control = form.get(field);
+    Object.values(form.controls).forEach(control => {
+      // const control = form.get(field);
       control.markAsTouched({onlySelf: true});
     })
   }
