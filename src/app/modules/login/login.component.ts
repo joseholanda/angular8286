@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private loginService: LoginService, private roteador: Router) { }
 
   ngOnInit() {
   }
@@ -23,11 +25,12 @@ export class LoginComponent implements OnInit {
   handleLogin(formLogin: NgForm) {
     if (formLogin.valid) {
       
-      this.httpClient
-        .post('http://localhost:3200/login', this.login)
+      this.loginService
+        .logar(this.login)
         .subscribe(
             (response: any) => {
-              localStorage.setItem('TOKEN', response.token);
+              this.roteador.navigate(['/inbox'])
+              // localStorage.setItem('TOKEN', response.token);
               console.log(response);
               console.log('deu certo');
             },

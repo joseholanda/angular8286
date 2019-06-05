@@ -16,13 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastroModule } from './modules/cadastro/cadastro.module';
 
 import { SharedComponentsModule } from './components/shared-components.module';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     // HeaderComponent,
     CaixaDeEntradaComponent,
-    LoginComponent,
+    // LoginComponent,
     // CadastroComponent,
     // CmailFormGroupComponent,
     // CmailFormFieldDirective,
@@ -36,6 +37,7 @@ import { SharedComponentsModule } from './components/shared-components.module';
     // CadastroModule,
     SharedComponentsModule,
     // ReactiveFormsModule,
+    LoginModule,
     
   ],
   providers: [],

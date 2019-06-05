@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { EmailService } from '../../services/email.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'cmail-caixa-de-entrada',
@@ -9,12 +11,27 @@ import { NgForm } from '@angular/forms';
 export class CaixaDeEntradaComponent {
 
   private _isNewEmailFormOpen = false;
-
+  
+  mensagemErro: any;
   emailList = [];
   email = {
     destinatario: '',
     assunto: '',
     conteudo: ''
+  }
+
+  constructor(private emailService: EmailService) {
+
+  }
+
+  ngOnInit() {
+    this.emailService
+      .listar()
+      .subscribe( 
+        lista => {
+          this.emailList = lista
+        }
+      )
   }
 
   get isNewEmailFormOpen() {
@@ -32,18 +49,22 @@ export class CaixaDeEntradaComponent {
       return;
     }
 
-    this.emailList.push(this.email)
-
-    this.email = {
-      destinatario: '',
-      assunto: '',
-      conteudo: ''
-    }
-
-    this.limparFormulario();
-    formEmail.reset();
-    this.toggleNewEmailForm();
-
+    //this.emailList.push(this.email)
+    this.emailService
+      .enviar(this.email)
+      .subscribe(
+        (response: any) => {
+          this.emailList.push(response);
+          this.limparFormulario();
+          formEmail.reset();
+          this.toggleNewEmailForm();
+        },
+        (error: HttpErrorResponse) => {
+          this.mensagemErro = error.error.body; 
+          console.log(error);
+          console.log('deu pau');
+        }
+      );
   }
 
   limparFormulario() {

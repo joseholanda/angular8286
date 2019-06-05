@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
@@ -9,6 +10,14 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   logar(dadosLogin) {
-    return this.http.post(this.api, dadosLogin);
+    return  this.http
+                .post(this.api, dadosLogin)
+                .pipe(
+                  map( (response:any ) => {
+                    localStorage.setItem('TOKEN', response.token);
+                    return response;
+                  })
+                )
+
   }
 }
