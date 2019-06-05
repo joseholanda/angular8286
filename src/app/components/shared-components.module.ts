@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [HeaderComponent, CmailFormGroupComponent, CmailFormFieldDirective],
   imports: [
-    CommonModule
+    CommonModule, RouterModule
   ],
   exports: [HeaderComponent, CmailFormGroupComponent, CmailFormFieldDirective]
 })
