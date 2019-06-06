@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { User } from '../../models/user';
 
 @Component({
     selector: "cmail-header",
@@ -7,6 +8,18 @@ import { Component } from "@angular/core";
 })
 export class HeaderComponent {
     private _isMenuOpen = false;
+
+    user = {};
+    //user = new User({nome: '', username: '', password: '', avatar: ''});
+
+    ngOnInit() {
+        this.user = new User({
+            nome: localStorage.getItem('nome'),
+            username: localStorage.getItem('email'),
+            password: '',
+            avatar: localStorage.getItem('avatar')
+        });
+    }
 
     get isMenuOpen() {
         return this._isMenuOpen;

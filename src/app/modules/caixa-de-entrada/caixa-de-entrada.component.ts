@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -6,9 +6,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'cmail-caixa-de-entrada',
   templateUrl: './caixa-de-entrada.component.html',
-  styles: []
+  styles: [`
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }`
+  ]
 })
-export class CaixaDeEntradaComponent {
+export class CaixaDeEntradaComponent implements OnInit{
 
   private _isNewEmailFormOpen = false;
   

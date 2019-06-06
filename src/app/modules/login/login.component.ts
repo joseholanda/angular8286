@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
             (response: any) => {
               this.roteador.navigate(['/inbox'])
               // localStorage.setItem('TOKEN', response.token);
-              console.log(response);
-              console.log('deu certo');
+              //console.log(response);
+              //console.log('deu certo');
             },
             (error: HttpErrorResponse) => {
               this.mensagemErro = error.error.body; 
