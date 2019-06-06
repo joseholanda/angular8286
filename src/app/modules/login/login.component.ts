@@ -30,14 +30,9 @@ export class LoginComponent implements OnInit {
         .subscribe(
             (response: any) => {
               this.roteador.navigate(['/inbox'])
-              // localStorage.setItem('TOKEN', response.token);
-              //console.log(response);
-              //console.log('deu certo');
             },
             (error: HttpErrorResponse) => {
-              this.mensagemErro = error.error.body; 
-              console.log(error);
-              console.log('deu pau');
+              this.mensagemErro = error.error.body;
             }
         );
 

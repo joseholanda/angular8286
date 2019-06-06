@@ -18,7 +18,6 @@ export class LoginService {
                 .post(this.api, dadosLogin)
                 .pipe(
                   map( (response:any ) => {
-                    console.log('NOVO TOKEN: ' + response.token);
                     localStorage.setItem('TOKEN', response.token);
                     localStorage.setItem('email', response.email);
                     localStorage.setItem('avatar', response.avatarUrl);
