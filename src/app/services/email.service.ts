@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class EmailService {
   
+  
   api = 'http://localhost:3200/emails';
   // cabecalho = new HttpHeaders({ 'Authorization': localStorage.getItem('TOKEN')});
 
@@ -15,6 +16,10 @@ export class EmailService {
 
   getCabecalho() {
     return new HttpHeaders({ 'Authorization': localStorage.getItem('TOKEN')});
+  }
+
+  deletar(id) {
+    return this.http.delete(`${this.api}/${id}`, {headers: this.getCabecalho()});
   }
 
   listar() {
@@ -30,7 +35,8 @@ export class EmailService {
                                 destinatario: emailApi.to,
                                 assunto: emailApi.subject,
                                 conteudo: emailApi.content,
-                                dataDeEnvio: emailApi.created_at
+                                dataDeEnvio: emailApi.created_at,
+                                id: emailApi.id
                               })
                             )
                 }
@@ -45,7 +51,7 @@ export class EmailService {
       subject: assunto,
       content: conteudo
     };
-    
+
     return this.http
         .post(this.api, emailParaApi, {headers: this.getCabecalho()})
         .pipe<Email>(
@@ -55,7 +61,8 @@ export class EmailService {
                 destinatario: emailApi.to,
                 assunto: emailApi.subject,
                 conteudo: emailApi.content,
-                dataDeEnvio: emailApi.created_at
+                dataDeEnvio: emailApi.created_at,
+                id: emailApi.id
               })
             }
           )

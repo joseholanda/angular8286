@@ -11,6 +11,8 @@
               [assunto]="email.assunto"
               [introducaoDoConteudo]="email.introducaoDoConteudo"
               [dataDeEnvio]="email.dataDeEnvio"
+              [id]="email.id"
+              (eventoVaiRemover)="handleRemoveEmail(email.id)"
             >
             </cmail-list-item>
           </li>

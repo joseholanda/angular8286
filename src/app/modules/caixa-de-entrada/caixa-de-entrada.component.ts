@@ -48,6 +48,15 @@ export class CaixaDeEntradaComponent implements OnInit{
     this._isNewEmailFormOpen = !this.isNewEmailFormOpen
   }
 
+  handleRemoveEmail(id) {
+    this.emailService
+          .deletar(id)
+          .subscribe( response => {
+            this.emailList = this.emailList.filter(email => email.id != id)
+          },err => console.log(err)
+      );
+  }
+
   handleNewEmail(formEmail: NgForm) {
 
     if (formEmail.invalid) {
